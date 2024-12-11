@@ -44,6 +44,7 @@ namespace CRUDProduto.Infrastructure
         private static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddScoped<IProdutoService, ProdutoService>();
+            services.AddScoped<ICategoriaService, CategoriaService>();
             services.AddAutoMapper(typeof(MappingService));
 
             return services;
