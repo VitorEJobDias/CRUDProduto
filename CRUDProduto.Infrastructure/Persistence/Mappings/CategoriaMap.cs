@@ -8,6 +8,7 @@ namespace CRUDProduto.Infrastructure.Persistence.Mappings
     {
         public void Configure(EntityTypeBuilder<Categoria> builder)
         {
+            builder.ToTable("tbCategoria");
             builder.ConfigureBase();
 
             builder.HasKey(p => p.Id);  

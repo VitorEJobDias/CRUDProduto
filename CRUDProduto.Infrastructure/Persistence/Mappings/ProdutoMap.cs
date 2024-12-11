@@ -8,12 +8,14 @@ namespace CRUDProduto.Infrastructure.Persistence.Mappings
     {
         public void Configure(EntityTypeBuilder<Produto> builder)
         {
+            builder.ToTable("tbProduto");
+
             builder.ConfigureBase();
             builder.HasKey(p => p.Id);  
             builder.Property(p => p.Active).IsRequired();  
-            builder.Property(p => p.Preco).IsRequired();  
+            builder.Property(p => p.Preco).IsRequired().HasColumnType("decimal(18,2)");  
             builder.Property(p => p.Nome).IsRequired();  
-            builder.Property(p => p.IdCategoria).IsRequired().HasColumnType("decimal(18,2)");
+            builder.Property(p => p.IdCategoria).IsRequired();
 
             builder.HasOne(p => p.Categoria)
                 .WithMany(c => c.Produtos)
