@@ -2,29 +2,21 @@
 using Microsoft.EntityFrameworkCore;
 using CRUDProduto.Core.Entities;
 using CRUDProduto.Core.Services;
-using CRUDProduto.Core.Dtos;
-using AutoMapper;
 
 namespace CRUDProduto.Infrastructure.Persistence.Services
 {
     public class CategoriaService : ICategoriaService
     {
-        private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CategoriaService(IUnitOfWork unitOfWork, IMapper mapper)
+        public CategoriaService(IUnitOfWork unitOfWork)
         {
-            _mapper = mapper;
             _unitOfWork = unitOfWork;
         }
 
-        public async Task CreateCategoriaAsync(CategoriaDTO categoria)
+        public async Task CreateCategoriaAsync(Categoria categoria)
         {
-            if (categoria == null) throw new ArgumentNullException(nameof(categoria));
-
-            Categoria categoriaCadastrada = new Categoria(categoria.Nome);
-
-            await _unitOfWork.Categoria.CreateCategoriaAsync(categoriaCadastrada);
+            await _unitOfWork.Categoria.CreateCategoriaAsync(categoria);
             await _unitOfWork.SaveChangesAsync();
         }
 
@@ -40,10 +32,10 @@ namespace CRUDProduto.Infrastructure.Persistence.Services
             await _unitOfWork.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<CategoriaDTO>> GetCategoriasAsync() =>
-            _mapper.Map<IEnumerable<CategoriaDTO>>(await _unitOfWork.Categoria.GetCategoriasAsync(c => c.Active, c => c.Include(p => p.Produtos)));
-        
-        public async Task<CategoriaDTO> GetCategoriaByIdAsync(Guid id) =>
-            _mapper.Map<CategoriaDTO>(await _unitOfWork.Categoria.GetCategoriaByIdAsync(id));
+        public async Task<IEnumerable<Categoria?>> GetCategoriasAsync() =>
+            await _unitOfWork.Categoria.GetCategoriasAsync(c => c.Active, c => c.Include(p => p.Produtos));
+
+        public async Task<Categoria?> GetCategoriaByIdAsync(Guid id) =>
+            await _unitOfWork.Categoria.GetCategoriaByIdAsync(id);
     }
 }
