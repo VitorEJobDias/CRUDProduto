@@ -17,5 +17,15 @@
         {
             Active = false;
         }
+
+        protected void SetActive(bool active)
+        {
+            Active = active;
+        }
+
+        protected void SetCreated(DateTime created)
+        {
+            Created = created;
+        }
     }
 }
