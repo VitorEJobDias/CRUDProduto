@@ -27,12 +27,12 @@ namespace CRUDProduto.Infrastructure.Persistence.Repositories
             await _context.Set<T>().AddRangeAsync(entitys);
         }
 
-        public void UpdateAsync(T entity)
+        public void Update(T entity)
         {
             _context.Set<T>().Update(entity);
         }
 
-        public void UpdateAsync(List<T> entitys)
+        public void Update(List<T> entitys)
         {
             _context.Set<T>().UpdateRange(entitys);
         }
