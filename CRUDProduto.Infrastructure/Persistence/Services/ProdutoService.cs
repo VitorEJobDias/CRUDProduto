@@ -14,7 +14,7 @@ namespace CRUDProduto.Infrastructure.Persistence.Services
         }
 
         public async Task<IEnumerable<Produto?>> GetProdutosAsync() =>
-            await _unitOfWork.Produto.GetProdutosAsync();
+            await _unitOfWork.Produto.GetProdutosAsync(p => true);
 
         public async Task<Produto?> GetProdutoByIdAsync(Guid id) =>
             await _unitOfWork.Produto.GetProdutoByIdAsync(id);

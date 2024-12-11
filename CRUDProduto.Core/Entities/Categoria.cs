@@ -9,8 +9,10 @@ namespace CRUDProduto.Core.Entities
         public IReadOnlyCollection<Produto> Produtos => _produtos;
         private readonly List<Produto> _produtos;
 
-        public Categoria(string nome)
+        public Categoria(string? nome)
         {
+            if (string.IsNullOrEmpty(nome)) throw new ArgumentNullException(nameof(nome));
+
             Nome = nome;
             _produtos = new List<Produto>();
         }
