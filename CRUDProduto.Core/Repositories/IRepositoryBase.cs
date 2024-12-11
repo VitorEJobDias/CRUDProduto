@@ -1,14 +1,15 @@
-﻿using System.Linq.Expressions;
+﻿using Microsoft.EntityFrameworkCore.Query;
+using System.Linq.Expressions;
 
 namespace CRUDProduto.Core.Repositories
 {
     public interface IRepositoryBase<T>
     {
         Task CreateAsync(T entity);
-        Task UpdateAsync(T entity);
-        Task<IEnumerable<T>> GetAllAsync();
-        Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includes);
-        Task<T?> GetByIdAsync(Guid id);
-        Task<T?> GetByIdAsync(Guid id, params Expression<Func<T, object>>[] includes);
+        Task CreateAsync(List<T> entitys);
+        void UpdateAsync(T entity);
+        void UpdateAsync(List<T> entitys);
+        IQueryable<T> GetAllAsync(bool tracking = false);
+        Task<IEnumerable<T>> Search(Expression<Func<T, bool>> consulta, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, bool tracking = false);
     }
 }

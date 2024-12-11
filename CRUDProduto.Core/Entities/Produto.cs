@@ -17,7 +17,7 @@ namespace CRUDProduto.Core.Entities
             IdCategoria = idCategoria;
         }
 
-        public void Upate(string nome, decimal preco, Guid idCategoria)
+        public void Update(string nome, decimal preco, Guid idCategoria)
         {
             Nome = nome;
             Preco = preco;
