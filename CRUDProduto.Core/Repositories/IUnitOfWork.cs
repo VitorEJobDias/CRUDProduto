@@ -2,8 +2,8 @@
 {
     public interface IUnitOfWork : IDisposable
     {
-        ICategoriaRepository CategoriaRepository { get; }
-        IProdutoRepository ProdutoRepository { get; }
+        IProdutoRepository Produto { get; }
+        ICategoriaRepository Categoria { get; }
 
         Task<int> SaveChangesAsync();
     }
