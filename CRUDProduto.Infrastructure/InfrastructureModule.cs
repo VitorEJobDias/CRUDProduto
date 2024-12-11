@@ -1,9 +1,11 @@
-﻿using CRUDProduto.Core.Repositories;
-using CRUDProduto.Infrastructure.Persistence;
-using CRUDProduto.Infrastructure.Persistence.Repositories;
+﻿using CRUDProduto.Core.Services;
+using CRUDProduto.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using CRUDProduto.Infrastructure.Persistence;
 using Microsoft.Extensions.DependencyInjection;
+using CRUDProduto.Infrastructure.Persistence.Services;
+using CRUDProduto.Infrastructure.Persistence.Repositories;
 
 namespace CRUDProduto.Infrastructure
 {
@@ -41,7 +43,7 @@ namespace CRUDProduto.Infrastructure
 
         private static IServiceCollection AddServices(this IServiceCollection services)
         {
-            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IProdutoService, ProdutoService>();
             services.AddAutoMapper(typeof(MappingService));
 
             return services;
