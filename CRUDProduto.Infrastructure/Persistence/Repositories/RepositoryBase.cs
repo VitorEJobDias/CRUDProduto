@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Query;
-using CRUDProduto.Core.Repositories;
+﻿using CRUDProduto.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 using CRUDProduto.Core.Common;
 using System.Linq.Expressions;
@@ -37,13 +36,18 @@ namespace CRUDProduto.Infrastructure.Persistence.Repositories
             _context.Set<T>().UpdateRange(entitys);
         }
 
-        public virtual async Task<IEnumerable<T>> Search(Expression<Func<T, bool>> consulta, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, bool tracking = false)
+        public virtual async Task<IEnumerable<T>> Search(Expression<Func<T, bool>> consulta, Func<IQueryable<T>, IQueryable<T>>? includes = null, bool tracking = false)
         {
             IQueryable<T> query = _dbSet;
 
-            if (include != null)
+            if (includes != null)
             {
-                query = include(query);
+                query = includes(query);
+            }
+
+            if (consulta != null)
+            {
+                query = query.Where(consulta);
             }
 
             if (!tracking)
@@ -51,7 +55,7 @@ namespace CRUDProduto.Infrastructure.Persistence.Repositories
                 query = query.AsNoTracking();
             }
 
-            return await query.Where(consulta).AsNoTracking().ToListAsync();
+            return await query.ToListAsync();
         }
 
         public IQueryable<T> GetAllAsync(bool tracking = false)

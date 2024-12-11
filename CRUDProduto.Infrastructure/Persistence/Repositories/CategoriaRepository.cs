@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Query;
-using CRUDProduto.Core.Repositories;
+﻿using CRUDProduto.Core.Repositories;
 using CRUDProduto.Core.Entities;
 using System.Linq.Expressions;
 
@@ -30,8 +29,8 @@ namespace CRUDProduto.Infrastructure.Persistence.Repositories
             await CreateAsync(categoria);
         }
 
-        public async Task<IEnumerable<Categoria?>> GetCategoriasAsync(Expression<Func<Categoria, bool>> consulta, Func<IQueryable<Categoria>, IIncludableQueryable<Categoria, object>>? include = null, bool tracking = false) =>
-            await Search(consulta, include, tracking);
+        public async Task<IEnumerable<Categoria?>> GetCategoriasAsync(Expression<Func<Categoria, bool>> consulta, Func<IQueryable<Categoria>, IQueryable<Categoria>>? includes = null, bool tracking = false) =>
+            await Search(consulta, includes, tracking);
 
         public async Task<Categoria?> GetCategoriaByIdAsync(Guid id)
         {

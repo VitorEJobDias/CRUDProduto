@@ -1,6 +1,5 @@
-﻿using CRUDProduto.Core.Entities;
-using CRUDProduto.Core.Repositories;
-using Microsoft.EntityFrameworkCore.Query;
+﻿using CRUDProduto.Core.Repositories;
+using CRUDProduto.Core.Entities;
 using System.Linq.Expressions;
 
 namespace CRUDProduto.Infrastructure.Persistence.Repositories
@@ -37,7 +36,7 @@ namespace CRUDProduto.Infrastructure.Persistence.Repositories
             return produto.FirstOrDefault();
         }
 
-        public async Task<IEnumerable<Produto?>> GetProdutosAsync(Expression<Func<Produto, bool>> consulta, Func<IQueryable<Produto>, IIncludableQueryable<Produto, object>>? include = null, bool tracking = false) =>
+        public async Task<IEnumerable<Produto?>> GetProdutosAsync(Expression<Func<Produto, bool>> consulta, Func<IQueryable<Produto>, IQueryable<Produto>>? include = null, bool tracking = false) =>
             await Search(consulta, include, tracking);
     }
 }
