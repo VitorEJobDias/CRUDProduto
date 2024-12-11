@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CRUDProduto.Application\CRUDProduto.Application.csproj" />
     <ProjectReference Include="..\CRUDProduto.Infrastructure\CRUDProduto.Infrastructure.csproj" />
   </ItemGroup>
 

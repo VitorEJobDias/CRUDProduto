@@ -1,9 +1,11 @@
 using CRUDProduto.Infrastructure;
+using CRUDProduto.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Adiciona a configuração de infraestrutura com seus serviços e repositórios
 builder.Services
+    .AddApplication()
     .AddInfrastructure(builder.Configuration);
 
 builder.Services.AddControllers();

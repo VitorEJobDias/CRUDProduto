@@ -2,10 +2,11 @@
 using CRUDProduto.Core.Dtos;
 using CRUDProduto.Core.Entities;
 using CRUDProduto.Core.Services;
+using CRUDProduto.Application.Interfaces.Services;
 
 namespace CRUDProduto.Application.Services
 {
-    public class CategoriaAppService
+    public class CategoriaAppService : ICategoriaAppService
     {
         private readonly IMapper _mapper;
         private readonly ICategoriaService _categoriaService;
