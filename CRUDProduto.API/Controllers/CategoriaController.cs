@@ -17,8 +17,7 @@ namespace CRUDProduto.API.Controllers
         }
 
         [SwaggerOperation(Summary = "Retorna todas as categorias", Description = "Esta chamada tem por finalidade retornar todas as categorias de produtos cadastradas no banco de dados.")]
-        [Route("GetAllCategoriasAsync")]
-        [HttpGet]
+        [HttpGet("GetAllCategoriasAsync")]
         public async Task<ActionResult<IEnumerable<CategoriaDTO>>> GetAllCategoriasAsync()
         {
             try

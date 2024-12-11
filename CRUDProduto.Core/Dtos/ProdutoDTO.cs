@@ -4,8 +4,8 @@
     {
         public Guid Id { get; set; }
         public bool Active { get; set; }
-        public string? Nome { get; private set; }
-        public decimal Preco { get; private set; }
-        public Guid IdCategoria { get; private set; }
+        public string? Nome { get; set; }
+        public decimal Preco { get; set; }
+        public Guid IdCategoria { get; set; }
     }
 }

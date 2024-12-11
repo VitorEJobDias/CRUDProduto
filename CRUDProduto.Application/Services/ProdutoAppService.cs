@@ -3,6 +3,7 @@ using CRUDProduto.Core.Dtos;
 using CRUDProduto.Core.Entities;
 using CRUDProduto.Core.Services;
 using CRUDProduto.Application.Interfaces.Services;
+using CRUDProduto.Infrastructure.Persistence.Services;
 
 namespace CRUDProduto.Application.Services
 {
@@ -17,10 +18,12 @@ namespace CRUDProduto.Application.Services
             _mapper = mapper;
         }
 
-        public async Task CreateProdutoAsync(ProdutoDTO produto)
+        public async Task CreateProdutoAsync(ProdutoDTO produtoDto)
         {
-            var produtoEntity = _mapper.Map<Produto>(produto);
-            await _produtoService.CreateProdutoAsync(produtoEntity);
+            if (produtoDto == null) throw new ArgumentNullException(nameof(produtoDto));
+
+            var produto = _mapper.Map<Produto>(produtoDto);
+            await _produtoService.CreateProdutoAsync(produto);
         }
 
         public async Task DeleteProdutoAsync(Guid id)

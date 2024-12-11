@@ -17,8 +17,7 @@ namespace CRUDProduto.API.Controllers
         }
 
         [SwaggerOperation(Summary = "Retorna todos os produtos", Description = "Esta chamada tem por finalidade retornar todos os produtos cadastrados no banco de dados.")]
-        [Route("GetAllProdutosAsync")]
-        [HttpGet]
+        [HttpGet("GetAllProdutosAsync")]
         public async Task<ActionResult<IEnumerable<ProdutoDTO>>> GetAllProdutosAsync()
         {
             try
@@ -34,8 +33,7 @@ namespace CRUDProduto.API.Controllers
 
 
         [SwaggerOperation(Summary = "Cadastrar produto", Description = "Esta chamada tem por finalidade cadastrar um produto no banco de dados.")]
-        [Route("CreateProdutoAsync")]
-        [HttpPost]
+        [HttpPost("CreateProdutoAsync")]
         public async Task<ActionResult> CreateProdutoAsync(ProdutoDTO produtoDTO)
         {
             try

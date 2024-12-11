@@ -17,6 +17,7 @@ namespace CRUDProduto.Application
         private static IServiceCollection AddValidators(this IServiceCollection services)
         {
             services.AddScoped<ICategoriaAppService, CategoriaAppService>();
+            services.AddScoped<IProdutoAppService, ProdutoAppService>();
             return services;
         }
     }
