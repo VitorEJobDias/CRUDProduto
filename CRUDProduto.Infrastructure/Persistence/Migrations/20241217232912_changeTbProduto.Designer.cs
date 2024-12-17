@@ -4,6 +4,7 @@ using CRUDProduto.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRUDProduto.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(CRUDProdutoContext))]
-    partial class CRUDProdutoContextModelSnapshot : ModelSnapshot
+    [Migration("20241217232912_changeTbProduto")]
+    partial class changeTbProduto
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

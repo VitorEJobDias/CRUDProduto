@@ -20,7 +20,7 @@ namespace CRUDProduto.Infrastructure.Persistence.Mappings
             builder.HasOne(p => p.Categoria)
                 .WithMany(c => c.Produtos)
                 .HasForeignKey(p => p.IdCategoria)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
