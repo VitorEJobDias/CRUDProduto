@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRUDProduto.Tests.UnitTests.ProdutoUnitTests
 {
-    public class GetCategoriaTests
+    public class GetProdutoTests
     {
     }
 }

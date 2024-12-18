@@ -4,7 +4,7 @@ using CRUDProduto.Core.Entities;
 
 namespace CRUDProduto.Infrastructure.Persistence.Services
 {
-    internal class ProdutoService : IProdutoService
+    public class ProdutoService : IProdutoService
     {
         private readonly IUnitOfWork _unitOfWork;
 

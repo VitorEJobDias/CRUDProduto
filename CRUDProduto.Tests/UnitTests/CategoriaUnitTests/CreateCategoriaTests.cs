@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRUDProduto.Tests.UnitTests.CategoriaUnitTests
+namespace CRUDProduto.Tests.UnitTests.ProdutoUnitTests
 {
     public class CreateCategoriaTests
     {
